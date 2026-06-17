@@ -1,0 +1,141 @@
+Nama: Umar Shidiq
+# Menjalankan skrip
+(dicodingenv.venv) PS D:\Programming> & d:\Programming\dicoding\Latihan\googlesheets\dicodingenv.venv\Scripts\python.exe "d:/Programming/dicoding/BFPD_Umar Shidiq/submission_pemda/main.py"           
+==================================================
+STARTING ETL PIPELINE
+==================================================
+
+[1/3] Extracting data...
+Page 1 selesai.
+Page 2 selesai.
+Page 3 selesai.
+Page 4 selesai.
+Page 5 selesai.
+Page 6 selesai.
+Page 7 selesai.
+Page 8 selesai.
+Page 9 selesai.
+Page 10 selesai.
+Page 11 selesai.
+Page 12 selesai.
+Page 13 selesai.
+Page 14 selesai.
+Page 15 selesai.
+Page 16 selesai.
+Page 17 selesai.
+Page 18 selesai.
+Page 19 selesai.
+Page 20 selesai.
+Page 21 selesai.
+Page 22 selesai.
+Page 23 selesai.
+Page 24 selesai.
+Page 25 selesai.
+Page 26 selesai.
+Page 27 selesai.
+Page 28 selesai.
+Page 29 selesai.
+Page 30 selesai.
+Page 31 selesai.
+Page 32 selesai.
+Page 33 selesai.
+Page 34 selesai.
+Page 35 selesai.
+Page 36 selesai.
+Page 37 selesai.
+Page 38 selesai.
+Page 39 selesai.
+Page 40 selesai.
+Page 41 selesai.
+Page 42 selesai.
+Page 43 selesai.
+Page 44 selesai.
+Page 45 selesai.
+Page 46 selesai.
+Page 47 selesai.
+Page 48 selesai.
+Page 49 selesai.
+Page 50 selesai.
+(1000, 7)
+             title    price                        rating  ...       size          gender                  timestamp
+0  Unknown Product  $100.00  Rating: ⭐ Invalid Rating / 5  ...    Size: M     Gender: Men 2026-06-08 21:53:15.279251
+1        T-shirt 2  $102.15             Rating: ⭐ 3.9 / 5  ...    Size: M   Gender: Women 2026-06-08 21:53:15.279566
+2         Hoodie 3  $496.88             Rating: ⭐ 4.8 / 5  ...    Size: L  Gender: Unisex 2026-06-08 21:53:15.279821
+3          Pants 4  $467.31             Rating: ⭐ 3.3 / 5  ...   Size: XL     Gender: Men 2026-06-08 21:53:15.280080
+4      Outerwear 5  $321.59             Rating: ⭐ 3.5 / 5  ...  Size: XXL   Gender: Women 2026-06-08 21:53:15.280308
+
+[5 rows x 7 columns]
+Extracted 1000 rows
+
+[2/3] Transforming data...
+Cleaned data: 867 rows
+title        0
+price        0
+rating       0
+colors       0
+size         0
+gender       0
+timestamp    0
+dtype: int64
+(0, 7)
+0
+
+[3/3] Loading data...
+Data saved to csv: D:\Programming\dicoding\BFPD_Umar Shidiq\submission_pemda\fashion_products.csv
+Data saved to PostgreSQL table: fashion_products
+✓ Data saved to Google Sheets
+
+ETL Pipeline completed successfully!
+# Menjalankan unit test pada folder test
+(dicodingenv.venv) PS D:\Programming\dicoding\BFPD_Umar Shidiq\submission_pemda> python -m pytest tests           
+============================================== test session starts ==============================================
+platform win32 -- Python 3.14.2, pytest-9.0.3, pluggy-1.6.0
+rootdir: D:\Programming\dicoding\BFPD_Umar Shidiq\submission_pemda
+plugins: cov-7.1.0, mock-3.15.1
+collected 25 items                                                                                               
+
+tests\test_extract.py ..                                                                                   [  8%]
+tests\test_load.py .......                                                                                 [ 36%]
+tests\test_transform.py ................                                                                   [100%]
+
+=============================================== warnings summary ================================================
+tests/test_load.py::test_load_to_postgresql
+  D:\Programming\dicoding\BFPD_Umar Shidiq\submission_pemda\utils\load.py:24: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+    df.to_sql(name=table_name, con=engine, if_exists="replace", index=False)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+========================================= 25 passed, 1 warning in 2.33s =========================================
+# Menjalankan test coverage pada folder test
+(dicodingenv.venv) PS D:\Programming\dicoding\BFPD_Umar Shidiq\submission_pemda> coverage run -m pytest tests                   
+===================== test session starts =====================
+platform win32 -- Python 3.14.2, pytest-9.0.3, pluggy-1.6.0
+rootdir: D:\Programming\dicoding\BFPD_Umar Shidiq\submission_pemda
+plugins: cov-7.1.0, mock-3.15.1
+collected 25 items                                             
+
+tests\test_extract.py ..                                 [  8%]
+tests\test_load.py .......                               [ 36%]
+tests\test_transform.py ................                 [100%]
+
+====================== warnings summary =======================
+tests/test_load.py::test_load_to_postgresql
+  D:\Programming\dicoding\BFPD_Umar Shidiq\submission_pemda\utils\load.py:24: UserWarning: pandas only supports SQLAlchemy connectable (engine/connection) or database string URI or sqlite3 DBAPI2 connection. Other DBAPI2 objects are not tested. Please consider using SQLAlchemy.
+    df.to_sql(name=table_name, con=engine, if_exists="replace", index=False)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================ 25 passed, 1 warning in 3.51s ================
+
+(dicodingenv.venv) PS D:\Programming\dicoding\BFPD_Umar Shidiq\submission_pemda> coverage report             
+Name                      Stmts   Miss  Cover
+---------------------------------------------
+tests\test_extract.py        18      0   100%
+tests\test_load.py           42      0   100%
+tests\test_transform.py      47      0   100%
+utils\extract.py             29      0   100%
+utils\load.py                47      4    91%
+utils\transform.py           87     18    79%
+---------------------------------------------
+TOTAL                       270     22    92%
+
+# Google Sheets URL:
+https://docs.google.com/spreadsheets/d/1wOObbEOk2iWoevoGdC5j7zBu_EinKpChHWPpkAMVUyg/edit?usp=sharing
